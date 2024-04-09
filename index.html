@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<body>
+    <div id="day"></div>
+    <div id="time"></div>
+    <div id="noon"></div>
+    <script>
+      setInterval(function(){
+        var getDay = document.getElementById('day')
+        var getTime = document.getElementById('time')
+        var getNoon = document.getElementById('noon')
+
+        var d = new Date();
+        var day = d.getDay();
+        var h = d.getHours();
+        var m = d.getMinutes();
+        var s = d.getSeconds();
+        console.log(day, h, m, s)
+        if(h<10)
+            h = "0" + h;
+        if(m<10)
+            m = "0" + m;
+        if(s<10)
+            s = "0" + s;
+
+        var time = h + ":" + m + ":" + s;
+        getTime.innerText = time;
+
+        var date = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+        ]
+        getDay.innerText = date[day]
+        var check = h<12 ? "AM" : "PM"
+        getNoon.innerText = check
+      }, 1000)  
+    </script>
+</body>
+</html>
